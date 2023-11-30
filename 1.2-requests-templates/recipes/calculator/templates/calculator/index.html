@@ -5,10 +5,12 @@
     <title>Рецепты</title>
 </head>
 <body>
+<ul>
 {% for ingredient, amount in recipe.items %}
-    <p>{{ ingredient }}: {{ amount }}</p>
+    <li>{{ ingredient }}: {{ amount }}</li>
 {% empty %}
-    <p>Такого рецепта не знаю :(</p>
+    <li>Такого рецепта не знаю :(</li>
 {% endfor %}
+</ul>
 </body>
 </html>

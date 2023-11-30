@@ -19,5 +19,5 @@ from calculator.views import recipes_pages, master_page
 
 urlpatterns = [
     path('', master_page),
-    path('recipe/', recipes_pages, name='recipe')
+    path('recipe/', recipes_pages)
 ]
