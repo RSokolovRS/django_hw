@@ -15,9 +15,9 @@ Including another URLconf
 """
 
 from django.urls import path
-from calculator.views import recipes_pages, master_page
+from calculator.views import recipes_pages
 
 urlpatterns = [
-    path('', master_page),
-    path('recipe/', recipes_pages)
+    path('recipe/', recipes_pages),
+    path('recipe/<str:name>', recipes_pages)
 ]

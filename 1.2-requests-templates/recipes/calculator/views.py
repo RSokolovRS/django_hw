@@ -20,13 +20,17 @@ DATA = {
     # можете добавить свои рецепты ;)
 }
 
-def master_page(requests):
-    return HttpResponse('Master Page')
 
 
-def recipes_pages(requests):
+def recipes_pages(requests, name="Undefined"):
     template_name = 'calculator/index.html'
-    return render(requests, template_name, DATA)
+    for key, value in DATA.items():
+        if key == name:
+            contex = {'recipe': value}
+            return render(requests, template_name, contex)
+        else:
+            print({'recipe': (key, value)})
+            return render(requests, template_name, {'recipe': (key, value)})
 # Напишите ваш обработчик. Используйте DATA как источник данных
 # Результат - render(request, 'calculator/index.html', context)
 # В качестве контекста должен быть передан словарь с рецептом:
