@@ -21,16 +21,18 @@ DATA = {
 }
 
 
+def recipes (requests):
+    contex = {'recipe': DATA}
+    template_name = 'calculator/index.html'
+    return render(requests, template_name, contex)
 
-def recipes_pages(requests, name="Undefined"):
+def recipes_pages(requests, name: str):
     template_name = 'calculator/index.html'
     for key, value in DATA.items():
         if key == name:
             contex = {'recipe': value}
             return render(requests, template_name, contex)
-        else:
-            print({'recipe': (key, value)})
-            return render(requests, template_name, {'recipe': (key, value)})
+
 # Напишите ваш обработчик. Используйте DATA как источник данных
 # Результат - render(request, 'calculator/index.html', context)
 # В качестве контекста должен быть передан словарь с рецептом:
