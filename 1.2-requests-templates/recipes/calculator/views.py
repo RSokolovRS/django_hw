@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+
 DATA = {
     'omlet': {
         'яйца, шт': 2,
@@ -20,13 +21,18 @@ DATA = {
     # можете добавить свои рецепты ;)
 }
 
-def master_page(requests):
-    return HttpResponse('Master Page')
+def master_page(requests, a, b):
+    x = a + b
+    return HttpResponse('Master Page', a)
 
 
-def recipes_pages(requests):
-    template_name = 'calculator/index.html'
-    return render(requests, template_name, DATA)
+# def recipes_pages(requests):
+    # recipe = DATA[recipe]
+    # print(recipe)
+    # serving = int(request.GET.get('serving', 1))
+    # template_name = 'calculator/index.html'
+    # context = {'recipe': recipe}
+    # return render(requests, template_name, context)
 # Напишите ваш обработчик. Используйте DATA как источник данных
 # Результат - render(request, 'calculator/index.html', context)
 # В качестве контекста должен быть передан словарь с рецептом:
