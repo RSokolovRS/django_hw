@@ -21,18 +21,19 @@ DATA = {
     # можете добавить свои рецепты ;)
 }
 
-def master_page(requests, a, b):
-    x = a + b
-    return HttpResponse('Master Page', a)
 
+def recipes (requests):
+    contex = {'recipe': DATA}
+    template_name = 'calculator/index.html'
+    return render(requests, template_name, contex)
 
-# def recipes_pages(requests):
-    # recipe = DATA[recipe]
-    # print(recipe)
-    # serving = int(request.GET.get('serving', 1))
-    # template_name = 'calculator/index.html'
-    # context = {'recipe': recipe}
-    # return render(requests, template_name, context)
+def recipes_pages(requests, name: str):
+    template_name = 'calculator/index.html'
+    for key, value in DATA.items():
+        if key == name:
+            contex = {'recipe': value}
+            return render(requests, template_name, contex)
+
 # Напишите ваш обработчик. Используйте DATA как источник данных
 # Результат - render(request, 'calculator/index.html', context)
 # В качестве контекста должен быть передан словарь с рецептом:
