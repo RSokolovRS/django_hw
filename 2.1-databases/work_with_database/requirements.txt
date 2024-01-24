@@ -1,2 +1,6 @@
-django
-psycopg2-binary
+asgiref==3.7.2
+Django==4.2.7
+pytz==2023.3.post1
+sqlparse==0.4.4
+psycopg2-binary==2.9.9
+pillow==10.2.0
