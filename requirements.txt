@@ -1,6 +1,10 @@
 asgiref==3.7.2
 Django==4.2.7
+pillow==10.2.0
+psycopg==3.1.17
+psycopg-binary==3.1.17
+psycopg2-binary==2.9.9
 pytz==2023.3.post1
 sqlparse==0.4.4
-psycopg2-binary==2.9.9
-pillow==10.2.0
+sqlparser==0.0.9
+typing_extensions==4.9.0
