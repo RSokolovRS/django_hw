@@ -15,6 +15,8 @@ class Command(BaseCommand):
 
         for phone in phones:
             # TODO: Добавьте сохранение модели
-            p = Phone.objects.create(name=phone['name'], price=phone['price'], image=phone['image'],
-                                     release_date=phone['release_date'], lte_exists=phone['lte_exists'])
-            p.save()
+            db_load = Phone.objects.create(
+                name=phone['name'], price=phone['price'],
+                image=phone['image'],release_date=phone['release_date'],
+                lte_exists=phone['lte_exists'])
+            db_load.save()
