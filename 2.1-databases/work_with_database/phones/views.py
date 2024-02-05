@@ -11,7 +11,8 @@ def show_catalog(request):
     template = 'catalog.html'
     phones = Phone.objects.all()
     phones_name = phones.order_by(Lower('name'))
-    print(phones_name)
+    min_price = phones.filter(price__startswith=1)
+
     context = {'phones': phones_name}
     return render(request, template, context)
 
