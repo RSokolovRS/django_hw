@@ -19,6 +19,7 @@ from django.urls import path
 from books.views import books_view
 
 urlpatterns = [
-    path('', books_view, name='books'),
+    path('', books_view),
     path('admin/', admin.site.urls),
+    path('books/<pub_date:pub_date>/', books_view, name='books')
 ]
