@@ -15,11 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import register_converter
 
+from books.converters import DateConverter
 from books.views import books_view
+
+register_converter(DateConverter, 'date')
+
 
 urlpatterns = [
     path('', books_view),
     path('admin/', admin.site.urls),
-    path('books/<pub_date:pub_date>/', books_view, name='books')
+    path('books/', books_view, name='books'),
+    path('books/<date:pub_date>/', books_view, name='books')
 ]
