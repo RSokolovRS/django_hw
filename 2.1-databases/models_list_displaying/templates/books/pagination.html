@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="pagination">
     <span class="step-links">
         {% if page_obj.has_previous %}
@@ -15,3 +16,21 @@
         {% endif %}
     </span>
 </div>
+=======
+<!--<div class="pagination">-->
+    <nav class="list-pages">
+    <ul>
+        {% for p in page_obj %}
+        {{ p.pub_date }}
+<!--                   {% if page_obj.number == p %}-->
+        <li class="page-num page-num-selected">{{ p }}</li>
+<!--                   {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2  %}-->
+        <li class="page-num">
+            <a href="?page={{ p }}">{{ p }}</a>
+        </li>
+<!--                   {% endif %}-->
+        {% endfor %}
+    </ul>
+</nav>
+<!--</div>-->
+>>>>>>> origin/main

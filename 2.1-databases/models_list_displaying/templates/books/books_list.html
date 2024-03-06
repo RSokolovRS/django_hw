@@ -3,39 +3,31 @@
 
 {% block title %}Каталог книг{% endblock %}
 {% block content %}
-<div class="container">
+    <div class="container">
         <div class="header">
-            <h1><a href="books/">Каталог</a></h1>
+            <h1><a href="/books">Каталог</a></h1>
         </div>
-    <div class="row">
-        <div class="book col-md-4">
-            {% for book in books_list %}
-            <h2><a href="{% url 'books' book.pub_date %}">{{book.name}}</a></h2>
-            <p>Автор: {{book.author}}</p>
-            <p>Дата публикации: {{book.pub_date}}</p>
+
+        <div class="row">
+            {% for book in books %}
+            <div class="book col-md-4">
+                <h2>{{ book.name }}</h2>
+                <p>Автор:{{ book.author }}</p>
+                <p>Дата публикации:{{ book.pub_date|date:'d-m-Y' }}</p>
+            {% endfor %}
+            </div>
+        <div class="sort-block">
+            {% for book in books %}
+            <span class="sort-item">Сортировать по:</span>
+            <a class="sort-item" href="{% url 'books' book.pub_date %}">{{ book.pub_date|date:'d-m-Y' }}</a>
+            <a class="sort-item" href="?sort=max_price">{{ book.pub_date|date:'d-m-Y' }}</a>
             {% endfor %}
         </div>
-        <div class="book col-md-4">
-            {% for book in books_list %}
-            <h2><a href="{% url 'books' book.pub_date %}">{{book.name}}</a></h2>
-            <p>Автор: {{book.author}}</p>
-            <p>Дата публикации: {{book.pub_date}}</p>
-            {% endfor %}
-        </div>
-        <span class="step-links">
-     {% for book in books_all %}
-        {% if book.pub_date == 'POST' %}
-        <a href="{% url 'books' book.pub_date %}">{{book.pub_date}}</a>
-            <!--        <a href="{% url 'books' book.pub_date %}">{{book.pub_date}}</a>-->
-        {% endif %}
-    {% endfor %}
-     </span>
     </div>
 {% endblock %}
-
-
-
-
-
-
-
+<!--              </div>-->
+<!--            <div class="book col-md-4">-->
+<!--                <h2>1984</h2>-->
+<!--                <p>Автор: Джордж Оруэл</p>-->
+<!--                <p>Дата публикации: 2015-03-11</p>-->
+<!--            </div>-->
