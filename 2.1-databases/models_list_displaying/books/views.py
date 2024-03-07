@@ -7,7 +7,13 @@ from .models import Book
 def books_view(request):
     template = 'books/books_list.html'
     books = Book.objects.all()
-    context = {'books': books}
+    paginator = Paginator(books, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {
+        'books_list': page_obj,
+
+        }
     return render(request, template, context)
 
 # def book_pub_date(request, pub_date):
@@ -19,14 +25,11 @@ def books_view(request):
 def view_page(request, pub_date=None):
     template = 'books/books_list.html'
     books = Book.objects.filter(pub_date=pub_date)
-    paginator = Paginator(books, 2)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(pub_date)
-    for i in page_obj.paginator:
-        print(i)
+    # paginator = Paginator(books, 1)
+    # page_number = request.GET.get('page')
+    # page_obj = paginator.get_page(pub_date)
     context = {
-        'books': books,
-        'page_obj': page_obj,
+        'books_list': books,
         }
 
     return render(request, template, context)
