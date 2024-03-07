@@ -13,14 +13,6 @@
                 <h2><a href="{% url 'books' book.pub_date %}">{{book.name}}</a></h2>
                 <p>Автор:{{ book.author }}</p>
                 <p>Дата публикации:{{ book.pub_date }}</p>
-<!--                {% for b in book.pud_date %}-->
-<!--                {{ b }}-->
-<!--                {% endfor %}-->
-<!--                <h2><a href="{{ b }}">{{ b }}</a></h2>-->
-<!--                {% endfor %}-->
-<!--                {% if books.has_previous %}-->
-<!--                <h2><a href="{% url 'books' book.pub_date %}}">{{book.pub_date}}</a></h2>-->
-<!--                {% endif %}-->
                 {% endfor %}
             </div>
             <div class="book col-md-4">
@@ -31,5 +23,15 @@
                 {% endfor %}
             </div>
         </div>
-    </div>
+        <nav class="menu">
+        <ul>
+            {% for book in books_all %}
+             {% if book.pud_date not in books_list %}
+<!--            {{books_all.object_list}}-->
+            <li><a href="{% url 'books' book.pub_date %}">{{book.pub_date}}</a></li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+        </nav>
+</div>
 {% endblock %}
