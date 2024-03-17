@@ -4,34 +4,31 @@
 {% block title %}Каталог книг{% endblock %}
 {% block content %}
 <div class="container">
-        <div class="header">
-            <h1><a href="/books">Каталог</a></h1>
+    <div class="header">
+        <h1><a href="/books">Каталог</a></h1>
+    </div>
+    <div class="row">
+        <div class="book col-md-4">
+            {% for book in books_list %}
+            <h2><a href="{% url 'books' book.pub_date %}">{{book.name}}</a></h2>
+            <p>Автор:{{ book.author }}</p>
+            <p>Дата публикации:{{ book.pub_date }}</p>
+            {% endfor %}
         </div>
-        <div class="row">
-            <div class="book col-md-4">
-                {% for book in books_list %}
-                <h2><a href="{% url 'books' book.pub_date %}">{{book.name}}</a></h2>
-                <p>Автор:{{ book.author }}</p>
-                <p>Дата публикации:{{ book.pub_date }}</p>
-                {% endfor %}
-            </div>
-            <div class="book col-md-4">
-                {% for book in books_list %}
-                <h2><a href="{% url 'books' book.pub_date %}">{{book.name}}</a></h2>
-                <p>Автор: {{ book.author }}</p>
-                <p>Дата публикации:{{ book.pub_date }}</p>
-                {% endfor %}
-            </div>
+        <div class="book col-md-4">
+            {% for book in books_list %}
+            <h2><a href="{% url 'books' book.pub_date %}">{{book.name}}</a></h2>
+            <p>Автор: {{ book.author }}</p>
+            <p>Дата публикации:{{ book.pub_date }}</p>
+            {% endfor %}
         </div>
-        <nav class="menu">
+    </div>
+    <nav class="menu">
         <ul>
-            {% for book in books_all %}
-             {% if book.pud_date not in books_list %}
-<!--            {{books_all.object_list}}-->
-            <li><a href="{% url 'books' book.pub_date %}">{{book.pub_date}}</a></li>
-            {% endif %}
+            {% for pub_date in books_all %}
+            <p><a href="{% url 'books' pub_date %}">{{ pub_date }}</a></p>
             {% endfor %}
         </ul>
-        </nav>
+    </nav>
 </div>
 {% endblock %}
