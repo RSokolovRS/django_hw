@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from phones.models import Phone
 from django.db.models import Avg, Max, Min
 from django.db.models.functions import Lower
@@ -9,11 +9,17 @@ def index(request):
 
 def show_catalog(request):
     template = 'catalog.html'
-    phones = Phone.objects.all()
-    phones_name = phones.order_by(Lower('name'))
-    min_price = phones.filter(price__startswith=1)
+    # post_ = request.GET['sort']
+    # phones = Phone.objects.all()
+    print(request.GET)
+    if request.GET == {}:
+        phones = Phone.objects.all()
+    elif request.GET['sort'] == 'name':
+        phones = Phone.objects.all().order_by(Lower('name'))
+    elif request.GET['sort'] == 'min_price':
+        phones = Phone.objects.all().aggregate(Min('price'))
 
-    context = {'phones': phones_name}
+    context = {'phones': phones,}
     return render(request, template, context)
 
 
@@ -22,3 +28,7 @@ def show_product(request, slug):
     phone = Phone.objects.get(slug=slug)
     context = {'phone': phone}
     return render(request, template, context)
+
+
+
+
