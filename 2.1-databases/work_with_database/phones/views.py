@@ -9,11 +9,17 @@ def index(request):
 
 def show_catalog(request):
     template = 'catalog.html'
-    phones = Phone.objects.all()
-    phones_name = phones.order_by(Lower('name'))
-    min_price = phones.filter(price__startswith=1)
-
-    context = {'phones': phones_name}
+    if request.GET == {}:
+        phones = Phone.objects.all()
+    elif request.GET['sort'] == 'name':
+        phones = Phone.objects.all().order_by(Lower('name'))
+    elif request.GET['sort'] == 'min_price':
+        phones = Phone.objects.order_by('price')
+    elif request.GET['sort'] == 'max_price':
+        phones = Phone.objects.order_by('-price')
+    context = {
+        'phones': phones,
+    }
     return render(request, template, context)
 
 
@@ -22,3 +28,4 @@ def show_product(request, slug):
     phone = Phone.objects.get(slug=slug)
     context = {'phone': phone}
     return render(request, template, context)
+
