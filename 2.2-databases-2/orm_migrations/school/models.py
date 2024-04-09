@@ -27,7 +27,7 @@ class Student(models.Model):
 
 
 class Enrollment(models.Model):
-    students = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='position')
-    teachers = models.ForeignKey(Teacher, on_delete=models.CASCADE, related_name='position')
+    students = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='enrollment')
+    teachers = models.ForeignKey(Teacher, on_delete=models.CASCADE, related_name='enrollment')
     date = models.DateField()  # дата поступления
     mark = models.IntegerField()  # полученный балл
