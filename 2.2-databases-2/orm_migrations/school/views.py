@@ -8,8 +8,9 @@ def students_list(request):
     template = 'school/students_list.html'
     object_list = Student.objects.all()
     students = Student.objects.filter(enrollment__students__group='8A')
-    context = {'object_list': object_list}
-    print(students)
+    context = {'object_list': object_list,
+               'stub': students}
+
 
     # используйте этот параметр для упорядочивания результатов
     # https://docs.djangoproject.com/en/2.2/ref/models/querysets/#django.db.models.query.QuerySet.order_by
