@@ -7,9 +7,8 @@ from .models import Student
 def students_list(request):
     template = 'school/students_list.html'
     object_list = Student.objects.all()
-    students = Student.objects.filter(enrollment__students__group='8A')
-    context = {'object_list': object_list,
-               'stub': students}
+    # students = object_list.filter(enrollment__teachers__id=3)
+    context = {'object_list': object_list}
 
 
     # используйте этот параметр для упорядочивания результатов
