@@ -4,7 +4,7 @@ from .models import Student, Teacher, Enrollment
 
 class EnrollmentInline(admin.TabularInline):
     model = Enrollment
-    extra = 0
+    extra = 3
 
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
