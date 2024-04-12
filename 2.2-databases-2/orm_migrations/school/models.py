@@ -15,8 +15,8 @@ class Teacher(models.Model):
 
 class Student(models.Model):
     name = models.CharField(max_length=30, verbose_name='Имя')
-    teachers = models.ManyToManyField(Teacher, related_name='students')
     group = models.CharField(max_length=10, verbose_name='Класс')
+    # teachers = models.ManyToManyField(Teacher, related_name='students')
 
     class Meta:
         verbose_name = 'Ученик'
@@ -29,5 +29,4 @@ class Student(models.Model):
 class Enrollment(models.Model):
     students = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='students')
     teachers = models.ForeignKey(Teacher, on_delete=models.CASCADE, related_name='teacher')
-    date = models.DateField()  # дата поступления
-    mark = models.IntegerField()  # полученный балл
+    quantity = models.IntegerField()  # полученный балл
