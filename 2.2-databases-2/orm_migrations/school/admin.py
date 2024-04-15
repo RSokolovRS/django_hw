@@ -10,7 +10,7 @@ class EnrollmentInline(admin.TabularInline):
 
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
-    ist_display = ['id', 'name', 'group']
+    list_display = ['id', 'name', 'group']
     list_filter = ['name', 'group']
     inlines = [EnrollmentInline, ]
 
