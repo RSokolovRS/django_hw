@@ -1,14 +1,19 @@
 from django.views.generic import ListView
 from django.shortcuts import render
 
-from .models import Student
+from .models import Student, Teacher
 
 
 def students_list(request):
     template = 'school/students_list.html'
-    object_list = Student.objects.all().order_by('group')
-    # students = object_list.filter(enrollment__teachers__id=3)
-    context = {'object_list': object_list}
+    students = Student.objects.all().order_by('group')
+    # teachers = Teacher.students.objects.all()
+    # teachers = Teacher.objects.get(students__id=3)
+    print(teachers)
+    context = {
+        'students': students,
+        # 'teachers': teachers
+    }
 
 
     # используйте этот параметр для упорядочивания результатов
