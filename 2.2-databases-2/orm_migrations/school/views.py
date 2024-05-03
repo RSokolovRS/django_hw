@@ -9,7 +9,10 @@ def students_list(request):
     students = Student.objects.all().order_by('group')
     # teachers = Teacher.students.objects.all()
     # teachers = Teacher.objects.get(students__id=3)
-    print(teachers)
+    for stu in students:
+        for tea in stu.teachers.all():
+            print(f'Студент {stu.name}: Преподователь {tea.name}')
+        # print(stu)
     context = {
         'students': students,
         # 'teachers': teachers
