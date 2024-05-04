@@ -123,6 +123,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+INTERNAL_IPS = ['127.0.0.1']
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
@@ -133,3 +134,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+# try:
+#     from .settings_local import *
+# except ImportError:
+#     pass
