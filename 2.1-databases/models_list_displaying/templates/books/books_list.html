@@ -11,24 +11,24 @@
         <div class="book col-md-4">
             {% for book in books_list %}
             <h2><a href="{% url 'books' book.pub_date %}">{{book.name}}</a></h2>
-            <p>Автор:{{ book.author }}</p>
-            <p>Дата публикации:{{ book.pub_date }}</p>
+            <p>Автор:{{book.author}}</p>
+            <p>Дата публикации:{{book.pub_date}}</p>
             {% endfor %}
         </div>
         <div class="book col-md-4">
             {% for book in books_list %}
-            <h2><a href="{% url 'books' book.pub_date %}">{{book.name}}</a></h2>
-            <p>Автор: {{ book.author }}</p>
-            <p>Дата публикации:{{ book.pub_date }}</p>
+            <h1><a href="{% url 'books' book.pub_date %}">{{book.name}}</a></h1>
+            <p>Автор: {{book.author}}</p>
+            <p>Дата публикации:{{book.pub_date}}</p>
             {% endfor %}
         </div>
     </div>
-    <nav class="menu">
+    <div>
         <ul>
             {% for pub_date in books_all %}
             <a href="{% url 'books' pub_date %}">{{pub_date}}</a>
             {% endfor %}
         </ul>
-    </nav>
+    </div>
 </div>
 {% endblock %}
