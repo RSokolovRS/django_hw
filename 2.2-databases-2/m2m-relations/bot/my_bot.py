@@ -1,3 +1,5 @@
+from django.utils import asyncio
+
 from telebot.async_telebot import AsyncTeleBot
 
 from django.conf import settings
