@@ -1,4 +1,4 @@
-from django.utils import asyncio
+import aiohttp
 
 from telebot.async_telebot import AsyncTeleBot
 
@@ -10,7 +10,7 @@ bot = AsyncTeleBot(settings.TOKEN_BOT, parse_mode='HTML')
 # Handle '/start' and '/help'
 @bot.message_handler(commands=['help', 'start'])
 async def send_welcome(message):
-    text = 'Hi, I am EchoBot.\nJust write me something and I will repeat it!'
+    text = 'Привет! Я Бот! \n Напиши, пока я повтарюша!'
     await bot.reply_to(message, text)
 
 
@@ -20,4 +20,4 @@ async def echo_message(message):
     await bot.reply_to(message, message.text)
 
 
-asyncio.run(bot.polling())
+# asyncio.run(bot.polling())
