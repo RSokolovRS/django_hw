@@ -10,8 +10,8 @@ bot = AsyncTeleBot(settings.TOKEN_BOT, parse_mode='HTML')
 # Handle '/start' and '/help'
 @bot.message_handler(commands=['help', 'start'])
 async def send_welcome(message):
-    text = 'Привет! Я Бот! \n Напиши, пока я повтарюша!'
-    await bot.reply_to(message, text)
+    text = 'Привет Друг'
+    await bot.send_message(message.chat.id, text)
 
 
 # Handle all other messages with content_type 'text' (content_types defaults to ['text'])
