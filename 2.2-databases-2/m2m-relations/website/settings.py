@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'articles.apps.ArticlesConfig',
-    'bot',
+    'bot.apps.BotConfig',
     'management',
     'debug_toolbar',
 ]
