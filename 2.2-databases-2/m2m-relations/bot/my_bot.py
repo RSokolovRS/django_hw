@@ -1,10 +1,22 @@
 import aiohttp
+import logging
 
+from django.template.defaultfilters import pprint
 from telebot.async_telebot import AsyncTeleBot
 
 from django.conf import settings
+from telebot.types import ChatMemberUpdated
 
 bot = AsyncTeleBot(settings.TOKEN_BOT, parse_mode='HTML')
+logging = logging.getLogger(__name__)
+
+
+@bot.chat_member_handler(ChatMemberUpdated)
+async def chat_member_handler_bot(message):
+    logging.info(f'вот {message}')
+    pprint(f'вот {message}')
+    # text = 'Новый подписчик!'
+    # await bot.send_message(message.chat.id, text)
 
 
 # Handle '/start' and '/help'
