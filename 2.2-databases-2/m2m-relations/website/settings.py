@@ -143,6 +143,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
+LOG_LEVEL = env.str('LOG_LEVEL')
 # try:
 #     from .settings_local import *
 # except ImportError:

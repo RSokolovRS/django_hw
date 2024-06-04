@@ -1,8 +1,12 @@
 import asyncio
+import logging
 
 from django.core.management.base import BaseCommand
+from django.config import settings
 
 from bot.my_bot import bot
+
+logger = logging.getLogger(__name__)
 
 
 class Command(BaseCommand):
@@ -12,7 +16,10 @@ class Command(BaseCommand):
     #     parser.add_argument("poll_ids", nargs="+", type=int)
 
     def handle(self, *args, **options):
-        asyncio.run(bot.polling())
+        try:
+            asyncio.run(bot.infinity_polling(logger_level=settings.LOG_LEVEL))
+        except Exception as err:
+            logging.error(f'Ошибка: {err}')
 
         # for poll_id in options["poll_ids"]:
         #     try:
